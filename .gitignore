@@ -1,0 +1,9 @@
+# Node
+node_modules/
+scraping-agent/session.json
+scraping-agent/.env
+
+# Java/IntelliJ
+analysis-api/target/
+analysis-api/.idea/
+analysis-api/src/main/resources/application.properties

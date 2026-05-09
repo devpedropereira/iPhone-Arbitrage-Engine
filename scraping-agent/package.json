@@ -1,0 +1,17 @@
+{
+  "name": "trator-marketplace",
+  "version": "1.0.0",
+  "description": "Scraper de arbitragem de iPhones no Facebook Marketplace",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "login": "node login.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "playwright": "^1.44.0",
+    "dotenv": "^16.4.0"
+  }
+}
