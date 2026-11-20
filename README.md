@@ -1,28 +1,24 @@
-# 🚜 Marketplace Profit Sentinel (iPhone Arbitrage Engine)
+# Marketplace Profit Sentinel (iPhone Arbitrage Engine)
 
-> Um ecossistema completo (Full-Stack) de mineração de dados e arbitragem para o Facebook Marketplace, focado em identificar oportunidades de compra e revenda de iPhones em tempo real.
+> Protótipo pessoal de estudo: um coletor em Node.js e uma API em Java/Spring Boot que classificam anúncios de iPhone por modelo, armazenamento e preço.
 
-![Status](https://img.shields.io/badge/Status-Ativo-success)
-![NodeJS](https://img.shields.io/badge/Node.js-Scraping_Agent-339933?logo=nodedotjs)
-![Java](https://img.shields.io/badge/Java_21-Analysis_API-007396?logo=java)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.0-6DB33F?logo=springboot)
-![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?logo=mysql)
+## Status
 
----
+- **Protótipo de estudo.** Este repositório não documenta implantação, execução contínua ou resultados de uso.
+- O código foi publicado como estrutura inicial (maio/2026). Os testes automatizados se limitam ao teste padrão de carregamento de contexto do Spring Boot.
+- A coleta automatizada de páginas do Facebook Marketplace pode violar os Termos de Uso da Meta. O código é mantido apenas como referência de arquitetura e não deve ser executado contra a plataforma.
 
-## 📖 Visão Geral
+## Visão geral
 
-O **Marketplace Profit Sentinel** é um sistema automatizado projetado para monitorar anúncios locais (Campinas/SP) de smartphones da Apple (do iPhone 11 ao 16, incluindo as versões Pro, Max, Plus e Mini). 
-
-O sistema coleta anúncios continuamente, extrai o modelo e a capacidade de armazenamento do título, cruza essas informações com um "gabarito" (teto) de preços pré-estabelecido em um banco de dados relacional, e envia notificações instantâneas via Telegram apenas para os anúncios que apresentam margem de lucro para revenda (arbitragem).
+O protótipo foi pensado para anúncios locais (Campinas/SP) de iPhone 11 a 16. A ideia: extrair modelo e capacidade de armazenamento do título, comparar o preço com uma tabela de referência ("gabarito") em MySQL e enviar uma notificação pelo Telegram quando o preço ficar abaixo do teto definido.
 
 ## 🏗️ Arquitetura do Sistema (Monorepo)
 
-O projeto é dividido em dois microsserviços principais:
+O projeto é dividido em dois componentes:
 
 1. **`scraping-agent` (O Trator - Node.js):** Responsável por varrer o Facebook Marketplace simulando uma sessão real, extraindo os títulos, preços e links dos anúncios e enviando lotes de dados em formato JSON para a API de análise.
 
-2. **`analysis-api` (O Cérebro - Java / Spring Boot):** Recebe os dados brutos, aplica *Expressões Regulares (Regex)* complexas para identificar os modelos exatos e sua capacidade de armazenamento. Compara o preço anunciado com a tabela `gabarito_precos` no MySQL e, se o anúncio for classificado como "OPORTUNIDADE", dispara um alerta via API do Telegram.
+2. **`analysis-api` (O Cérebro - Java / Spring Boot):** Recebe os dados brutos, aplica *Expressões Regulares (Regex)* para identificar os modelos exatos e sua capacidade de armazenamento. Compara o preço anunciado com a tabela `gabarito_precos` no MySQL e, se o anúncio for classificado como "OPORTUNIDADE", envia um alerta via API do Telegram.
 
 ## 📂 Estrutura de Pastas
 
